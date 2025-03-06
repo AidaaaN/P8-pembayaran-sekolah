@@ -1,6 +1,12 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\ManajemenDataController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PengaturanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +22,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // Pastikan file Blade Template-nya ada di resources/views/dashboard.blade.php
+});
+
+Route::get('/loginAdmin', function () {
+    return view('auth.loginAdmin'); // Buat file loginAdmin.blade.php
+});
+
+Route::get('/cekPembayaran', function () {
+    return view('auth.cekPembayaran'); // Buat file cekPembayaran.blade.php
+});
+
+Route::get('/loginSiswa', function () {
+    return view('auth.loginSiswa'); // Buat file loginSiswa.blade.php
+});
+
+
+Route::get('/loginAdmin', [AuthController::class, 'showLoginFormAdmin'])->name('login');
+Route::post('/loginAdmin', [AuthController::class, 'loginAdmin']);
+Route::get('/loginAdmin/dashboard', [AuthController::class, 'dashboardAdmin'])->middleware('auth')->name('dashboard');
+Route::get('/loginAdmin/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
+Route::get('/loginAdmin/keuangan', [KeuanganController::class, 'index'])->name('keuangan');
+Route::get('/loginAdmin/manajemen-data', [ManajemenDataController::class, 'index'])->name('manajemen-data');
+Route::get('/loginAdmin/laporan', [LaporanController::class, 'index'])->name('laporan');
+Route::get('/loginAdmin/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan');
+Route::get('/forgot-password-admin', [AuthController::class, 'showForgotFormAdmin'])->name('forgotPasswordAdminForm');
+Route::post('/forgot-password-admin', [AuthController::class, 'forgotPasswordAdmin'])->name('forgotPasswordAdmin');
