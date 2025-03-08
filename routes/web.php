@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Login admin
 Route::get('/dashboard', function () {
     return view('dashboard'); // Pastikan file Blade Template-nya ada di resources/views/dashboard.blade.php
 });
@@ -55,3 +57,18 @@ Route::get('/loginAdmin/laporan', [LaporanController::class, 'index'])->name('la
 Route::get('/loginAdmin/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan');
 Route::get('/forgot-password-admin', [AuthController::class, 'showForgotFormAdmin'])->name('forgotPasswordAdminForm');
 Route::post('/forgot-password-admin', [AuthController::class, 'forgotPasswordAdmin'])->name('forgotPasswordAdmin');
+
+
+//Login siswa 
+Route::get('/loginSiswa', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'processLogin']);
+
+Route::get('/konfirmasi-pembayaran', function () {
+    return view('konfirmasi');
+})->name('konfirmasi.form');
+
+Route::post('/konfirmasi-pembayaran', [PembayaranController::class, 'store'])->name('konfirmasi.store');
+
+// Route::get('/loginSiswa/konfirmasi', [AuthController::class, 'konfirmasi'])->middleware('auth')->name('dashboard');
+Route::get('/forgot-password-siswa', [AuthController::class, 'showForgotFormSiswa'])->name('forgotPassworSiswaForm');
+Route::post('/forgot-password-siswa', [AuthController::class, 'forgotPasswordAdmin'])->name('forgotPasswordSiswa');
