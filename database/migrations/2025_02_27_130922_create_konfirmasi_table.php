@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('konfirmasi', function (Blueprint $table) {
             $table->id(); // ID otomatis (bigint unsigned auto-increment)
-            $table->string('nomor_telepon', 15); // Nomor telepon (varchar untuk menghindari nol di awal)
-            $table->binary('bukti_pembayaran'); // Bukti pembayaran dalam bentuk BLOB
-            $table->date('tanggal'); // Tanggal konfirmasi
-            $table->string('jurusan_siswa', 30); // Jurusan siswa
-            $table->integer('kelas_siswa'); // Kelas siswa
-            $table->string('nama_siswa', 50); // Nama siswa
+            $table->string('nomor_telepon', 15)->nullable(false); // Nomor telepon (varchar untuk menghindari nol di awal)
+            $table->binary('bukti_pembayaran')->nullable(false); // Bukti pembayaran dalam bentuk BLOB
+            $table->date('tanggal',0)->nullable(false); // Tanggal konfirmasi
+            $table->string('jurusan_siswa',30)->nullable(false); // Jurusan siswa
+            $table->integer('kelas_siswa')->nullable(false); // Kelas siswa
+            $table->string('nama_siswa', 50)->nullable(false); // Nama siswa
             $table->timestamps(); 
         });
     }

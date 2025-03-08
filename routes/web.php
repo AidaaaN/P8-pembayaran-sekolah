@@ -6,6 +6,7 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ManajemenDataController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\KonfirmasiController;
 
 
 /*
@@ -37,6 +38,10 @@ Route::get('/cekPembayaran', function () {
 
 Route::get('/loginSiswa', function () {
     return view('auth.loginSiswa'); // Buat file loginSiswa.blade.php
+});
+
+Route::get('/konfirmasipembayaran', function () {
+    return view(('konfirmasipembayaran.index'));
 });
 
 
