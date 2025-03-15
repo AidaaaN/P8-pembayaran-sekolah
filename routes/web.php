@@ -40,8 +40,8 @@ Route::get('/loginSiswa', function () {
     return view('auth.loginSiswa'); // Buat file loginSiswa.blade.php
 });
 
-Route::get('/konfirmasipembayaran', function () {
-    return view(('konfirmasipembayaran.index'));
+Route::get('/konfirmasi', function () {
+    return view(('auth.konfirmasi'));
 });
 
 
@@ -52,6 +52,7 @@ Route::get('/loginAdmin/pembayaran', [PembayaranController::class, 'index'])->na
 Route::get('/loginAdmin/keuangan', [KeuanganController::class, 'index'])->name('keuangan');
 Route::get('/loginAdmin/manajemen-data', [ManajemenDataController::class, 'index'])->name('manajemen-data');
 Route::get('/loginAdmin/laporan', [LaporanController::class, 'index'])->name('laporan');
+Route::get('/loginSiswa/konfirmasi', [KonfirmasiController::class, 'index'])->name('konfirmasi');
 Route::get('/loginAdmin/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan');
 Route::get('/forgot-password-admin', [AuthController::class, 'showForgotFormAdmin'])->name('forgotPasswordAdminForm');
 Route::post('/forgot-password-admin', [AuthController::class, 'forgotPasswordAdmin'])->name('forgotPasswordAdmin');

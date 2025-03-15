@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <!-- custom css file link  -->
-       @vite(["resources/css/style1.css", "resources/js/app.js"])
+       @vite(["resources/css/style1.css"])
        <link rel="stylesheet" href="css/style1.css">
     <title>Konfirmasi Pembayaran</title>
 </head>
