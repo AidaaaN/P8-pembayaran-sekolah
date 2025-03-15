@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('tanggal_pembayaran'); // Tanggal pembayaran
             $table->integer('jumlah_pembayaran'); // Jumlah pembayaran
             $table->integer('sisa_pembayaran'); // Sisa pembayaran
+            $table->string('bukti_pembayaran')->nullable(); 
             $table->timestamps(); // created_at & updated_at
         });
     }
